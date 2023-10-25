@@ -14,9 +14,12 @@
   "license": "ISC",
   "dependencies": {
     "@polkadot/extension-dapp": "^0.46.5",
+    "axios": "^1.5.1",
     "next": "^13.5.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-query": "^3.39.3"
   },
   "devDependencies": {
     "@types/node": "20.8.7",

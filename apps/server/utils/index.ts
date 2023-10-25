@@ -1,2 +1,3 @@
 export * from './extendErrors';
-export * from './validSignature';
+export * from './token';
+export * from './sessionStore';

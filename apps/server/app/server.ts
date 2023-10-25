@@ -1,6 +1,7 @@
 import Koa from 'koa';
 import mongo from 'koa-mongo';
 import dotenv from 'dotenv';
+import bodyParser from 'koa-bodyparser';
 
 import {v1Router} from './router';
 import {handleError, routerGuard, cors} from '../middleware';
@@ -11,7 +12,6 @@ export const start = () => {
   const app = new Koa();
 
   app.use(handleError);
-  app.use(routerGuard);
   app.use(mongo({
     host: process.env.MONGO_HOST ?? 'localhost',
     port: Number(process.env.MONGO_PORT ?? 27017),
@@ -20,7 +20,9 @@ export const start = () => {
     max: 100,
     min: 1,
   }));
+  app.use(bodyParser());
   app.use(cors());
+  app.use(routerGuard);
 
   app.use(v1Router.routes());
 

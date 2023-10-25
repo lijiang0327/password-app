@@ -1,8 +1,7 @@
 import { Context, Next } from 'koa';
-import {validSignature, AuthError} from '../utils';
+import {verifyToken, AuthError} from '../utils';
 
 const whiteList = [
-  '/api/v1/password',
   '/api/v1/signin',
 ]
 
@@ -14,11 +13,13 @@ export const routerGuard = async (ctx: Context, next: Next) => {
     return;
   }
 
-  const isValid = await validSignature('');
+  const token = ctx.header.authorization;
+
+  const isValid = await verifyToken(token);
 
   if (!isValid) {
     throw new AuthError('invalid username or password');
   }
 
-  await next();
+  return await next();
 }

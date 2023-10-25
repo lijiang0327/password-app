@@ -6,9 +6,6 @@ let allowOrigins: string[] = [];
 const verifyOrigin = (ctx: Context) => {
   const origin = ctx.headers.origin;
 
-  console.log(origin);
-  console.log(allowOrigins);
-
   if (origin && allowOrigins.includes(origin)) {
     return origin;
   }
@@ -22,6 +19,6 @@ export const cors = () => {
 
   return koaCors({
     origin: verifyOrigin,
-    allowMethods: ['post', 'get']
+    allowMethods: ['POST', 'GET', 'OPTIONS']
   });
 }
