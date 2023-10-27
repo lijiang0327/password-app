@@ -10,7 +10,7 @@ const getPassword = async () => {
   } catch (error) {
     console.log(error);
     return {
-      status: error.response.status
+      status: error.response?.status
     }
   }
 }

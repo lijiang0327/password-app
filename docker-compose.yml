@@ -18,3 +18,9 @@ services:
       - 8081:8081
     depends_on:
       - mongo
+
+  # redis:
+  #   image: redis
+  #   command: redis-server --requirepass jiang666
+  #   ports:
+  #     - "6379:6379"
