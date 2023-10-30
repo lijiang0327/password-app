@@ -25,6 +25,7 @@ const AddressItem: FC<AddressItemProps> = ({name, address, onClick, selected}) =
   return <div 
     className={classnames('flex gap-4 items-center mt-4 hover:bg-slate-200 py-2 px-4 cursor-pointer', {'bg-slate-300': selected})}
     onClick={onClick}
+    data-testid="address-item"
     >
     <div 
       className="rounded-full bg-orange-400 text-white text-2xl w-10 h-10 flex items-center justify-center"
@@ -82,6 +83,7 @@ export const AddressDialog: FC<AddressDialogProps> = ({
           <div 
             className="cursor-pointer text-gray-600 rounded-lg px-4 py-2 bg-slate-200"
             onClick={onCloseHandler}
+            data-testid="cancel-button"
           >Cancel</div>
           <div 
             className={
@@ -94,6 +96,7 @@ export const AddressDialog: FC<AddressDialogProps> = ({
               )
             }
             onClick={onSignClickHandler}
+            data-testid="signin-button"
           >Signin</div>
         </div>
       }

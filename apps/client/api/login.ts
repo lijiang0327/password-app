@@ -9,7 +9,6 @@ type LoginParams = {
 }
 
 const login = async (params: LoginParams) => {
-
   const result = await request.post('/v1/signin', {...params});
 
   return result.data;

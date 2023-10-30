@@ -3,9 +3,9 @@
 import {useCallback, useState} from 'react';
 import type {Web3AccountsOptions, InjectedAccountWithMeta, InjectedExtension} from '@polkadot/extension-inject/types';
 
-type Web3Accounts = (options?: Web3AccountsOptions | undefined) => Promise<InjectedAccountWithMeta[]>
-type Web3FormAddress = (address: string) =>  Promise<InjectedExtension>;
-type Web3Enable = (originName: string, compatInits?: (() => Promise<boolean>)[]) => Promise<InjectedExtension[]>
+export type Web3Accounts = (options?: Web3AccountsOptions | undefined) => Promise<InjectedAccountWithMeta[]>
+export type Web3FormAddress = (address: string) =>  Promise<InjectedExtension>;
+export type Web3Enable = (originName: string, compatInits?: (() => Promise<boolean>)[]) => Promise<InjectedExtension[]>
 
 let paAccounts: Web3Accounts | null = null, 
     paEnable: Web3Enable | null = null, 
@@ -29,14 +29,19 @@ export const useAccounts = () => {
 
   const getAccounts = useCallback(async () => {
     if (!paEnable || !paAccounts) {
+      setAccounts([]);
       return;
     };
 
-    await paEnable('password-app');
+    const injectedExtensions = await paEnable('password-app');
+
+    if (!injectedExtensions?.length) {
+      setAccounts([]);
+      return;
+    }
+
     const allAccounts = await paAccounts();
     setAccounts(allAccounts);
-
-    return allAccounts;
   }, [])
 
   return {

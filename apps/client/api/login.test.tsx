@@ -10,10 +10,14 @@ jest.mock('../utils');
 const queryClient = new QueryClient();
 
 describe('login', () => {
-  it('should return isLoading and login function', async () => {
-    const wrapper = ({children}) => {
+  let wrapper;
+  beforeAll(() => {
+    wrapper = ({children}) => {
       return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     }
+  })
+
+  it('should return isLoading and login function', async () => {
     const {result} = renderHook(useLogin, {wrapper});
 
     expect(result.current.isLoading).toBe(false);
@@ -22,10 +26,6 @@ describe('login', () => {
   })
 
   it('should post params to api and get response', async () => {
-    const wrapper = ({children}) => {
-      return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    }
-
     const mockData = {
       data: {
         token: 'xxxxxx'
