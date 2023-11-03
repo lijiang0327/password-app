@@ -4,8 +4,8 @@ import { userEvent } from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import {QueryClientProvider, QueryClient} from 'react-query';
 
-import {useSignin} from '../../hooks/useSignin';
-import {useAccounts} from '../../hooks/usePolkadotExtension';
+import {useSignin} from '../../../hooks/useSignin';
+import {useAccounts} from '../../../hooks/usePolkadotExtension';
 
 const mockAccountsData: InjectedAccountWithMeta[] = [
   {
@@ -25,20 +25,20 @@ const mockAccountsData: InjectedAccountWithMeta[] = [
 ];
 
 jest.mock('next/router', () => require('next-router-mock'));
-jest.mock('../../hooks/useSignin', () => ({
+jest.mock('../../../hooks/useSignin', () => ({
   useSignin: jest.fn(() => ({
     isLoading: false,
     singin: jest.fn()
   }))
 }))
-jest.mock('../../hooks/usePolkadotExtension', () => ({
+jest.mock('../../../hooks/usePolkadotExtension', () => ({
   useAccounts: jest.fn(() => ({
     accounts: [],
     getAccounts: jest.fn()
   }))
 }))
 
-import Login from './index';
+import Login from '@/pages/login';
 import { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
 
 const queryClient = new QueryClient();

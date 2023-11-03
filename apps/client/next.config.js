@@ -1,3 +1,3 @@
 module.exports = {
-  pageExtensions: ['!.test.ts(x)', '.ts(x)']
+  pageExtensions: ['tsx', 'ts', '!test.ts', '!test.tsx']
 }

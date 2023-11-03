@@ -5,9 +5,9 @@ import {useRouter} from 'next/router';
 import toast, {Toaster} from 'react-hot-toast';
 import { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
 
-import {useGetPassword} from '../api';
-import {AddressDialog} from '../components/AddressDialog';
-import {useSignin} from '../hooks'
+import {useGetPassword} from 'api';
+import {AddressDialog} from 'components/AddressDialog';
+import {useSignin} from 'hooks'
 
 export default function Page() {
     const {data, getPassword} = useGetPassword();

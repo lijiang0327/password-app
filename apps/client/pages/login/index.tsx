@@ -6,8 +6,8 @@ import Image from 'next/image';
 import toast, {Toaster} from 'react-hot-toast';
 import { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
 
-import {useSignin} from '../../hooks';
-import {AddressDialog} from '../../components';
+import {useSignin} from 'hooks';
+import {AddressDialog} from 'components';
 
 const Login = () => {
   const [addressDialogVisible, setAddressDialogVisible] = useState(false);
@@ -39,7 +39,7 @@ const Login = () => {
       localStorage.setItem('password-app-token', result.token);
       setAddressDialogVisible(false);
       setTimeout(() => {
-        router.push('/a');
+        router.push('/');
       }, 2000);
       return;
     }
