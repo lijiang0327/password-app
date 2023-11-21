@@ -1,0 +1,40 @@
+name: Public Test Admin
+
+on:
+  workflow_dispatch:
+    inputs:
+      enviroment:
+        description: "choose a deployment target."
+        required: true
+        default: "engineer"
+        type: choice
+        options:
+          - engineer
+          - staging
+          - sandbox
+jobs:
+  PullSource:
+    runs-on: ubuntu-latest
+    name: "PullSource"
+    steps:
+      - name: Pull source
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: "123.249.115.108"
+          username: root
+          key: ${{ secrets.ACCESS_TOKEN }}
+          script: |
+            cd /root/source/react-arco-admin
+            git checkout .
+            git pull
+            pnpm i
+            cd /root/source/react-arco-admin/packages/server
+            pnpm build
+            pm2 restart server
+            cd /root/source/react-arco-admin/packages/admin
+            pnpm build
+            cd /root/source/react-arco-admin/packages/cms
+            pnpm build
+            pm2 restart cms
+            cd /root/source/react-arco-admin/packages/ui
+            pnpm build
