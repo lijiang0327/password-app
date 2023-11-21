@@ -6,7 +6,6 @@ export default function Document() {
     <Html>
       <Head>
         <title>secret app</title>
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       </Head>
       <body>
         <Main />
