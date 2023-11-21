@@ -24,14 +24,15 @@ jobs:
       - name: Pull source
         uses: appleboy/ssh-action@v0.1.6
         with:
-          host: "47.95.212.169"
-          username: root
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
           key: ${{ secrets.ACCESS_TOKEN }}
           script: |
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
             cd ~/deploy/password-app
             git checkout .
             git pull
-            npm i -g pnpm
             pnpm i
             cd ~/deploy/password-app/apps/server
             pnpm start
