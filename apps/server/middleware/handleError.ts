@@ -12,7 +12,7 @@ export const handleError = async (ctx: Context, next: Next) => {
     } 
 
   } catch (e) {
-
+    console.error(e);
     const error = e as ExtendedError;
 
     switch(error.code) {
@@ -34,7 +34,5 @@ export const handleError = async (ctx: Context, next: Next) => {
           errorMessage: 'unknown error'
         };
     }
-
-    console.error(error);
   }
 }
