@@ -33,5 +33,5 @@ jobs:
             git pull
             npm i -g pnpm
             pnpm i
-            cd ~/deploy/password/apps/server
+            cd ~/deploy/password-app/apps/server
             pnpm start
