@@ -3,5 +3,6 @@
     "strict": true,
     "module": "NodeNext",
     "target": "ES2015",
+    "outDir": "dist"
   }
 }

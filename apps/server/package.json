@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.ts",
+    "start": "pnpm build && node dist/index.js",
     "build": "tsc",
     "lint": "tsc --noEmit"
   },

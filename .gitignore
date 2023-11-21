@@ -4,3 +4,5 @@ mongodb
 
 apps/client/.next
 apps/client/coverage
+
+apps/server/dist
