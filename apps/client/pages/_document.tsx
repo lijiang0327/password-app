@@ -4,7 +4,10 @@ import * as React from 'react';
 export default function Document() {
   return (
     <Html>
-      <Head />
+      <Head>
+        <title>secret app</title>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+      </Head>
       <body>
         <Main />
         <NextScript />
