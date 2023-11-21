@@ -33,5 +33,4 @@ jobs:
             git pull
             pnpm i
             cd ~/deploy/password/apps/server
-            pnpm build
-            pm2 restart server
+            pnpm start
